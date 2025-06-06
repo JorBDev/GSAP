@@ -12,12 +12,17 @@
         }
 
         .box {
-            width: 100px;
-            height: 100px;
+            width: 75px;
+            height: 75px;
             border-radius: 12px;
             background: #09f;
             margin-bottom: 0.5rem;
+
+            &.purple {
+                background: rebeccapurple;
+            }
         }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -31,37 +36,33 @@
 
 </head>
 <body>
-    <div class="grid">
-        <img src="https://cdn.marvel.com/content/1x/005smp_com_crd_01.jpg" alt="">
-        <img src="https://cdn.marvel.com/content/1x/037smm_com_crd_01.jpg" alt="">
-        <img src="https://cdn.marvel.com/content/1x/055sgw_com_crd_01.jpg" alt="">
-        <img src="https://cdn.marvel.com/content/1x/427jjj_com_crd_04.jpg" alt="">
-        <img src="https://cdn.marvel.com/content/1x/204smn_com_crd_01_0.jpg" alt="">
-        <img src="https://cdn.marvel.com/content/1x/021slq_com_crd_01.jpg" alt="">
-        <img src="https://cdn.marvel.com/content/1x/105vat_com_crd_01.jpg" alt="">
-        <img src="https://cdn.marvel.com/content/1x/002irm_com_crd_01.jpg" alt="">
-        <img src="https://cdn.marvel.com/content/1x/104gno_com_crd_01.jpg" alt="">
-    </div>
+    <div class="box purple"></div>
+    <div class="box blue"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 
     <script>
+    // gsap: animación -> tween
 
-        // Staggered animation
-        gsap.to('.grid img', {
-            // x: 200, // posicion en x
-            duration: 2, // duración de animación
-            // rotate: 360, // rotación
-            scale: .9, // escalado
-            opacity: 0,
-            stagger: {// stagger a nivel de elemento individual
-                each: 1, // diferencia de tiempo entre cada animación
-                repeat: -1,
-                yoyo: true,
-                grid: 'auto',// se exparce la animación desde la esquina superior izquierda hasta la esquina inferior derecha
-                from: 'start' // desde que forma tiene que empezar: "start", "center", "edges", "random", or "end"
-            }
-        })
+    // suavizados -> easing: https://gsap.com/docs/v3/Eases/
+    gsap.to('.box.purple', {
+        x: 200,
+        duration: 2,
+        rotate: 360,
+        scale: .75,
+        repeat: -1,
+        yoyo: true,
+        ease: 'bounce.out'
+    })
+
+    gsap.to('.box.blue', {
+        x: 200,
+        duration: 2,
+        rotate: 360,
+        scale: .75,
+        repeat: -1,
+        yoyo: true
+    })
 
 
     </script>
