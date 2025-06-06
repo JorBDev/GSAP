@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Curso</title>
+
+    <style>
+        body {
+            background: #222;
+            font-family: system-ui, sans-serif;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            background: #09f;
+            margin-bottom: 0.5rem;
+        }
+        .box2 {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            background: red;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+    <script>
+        // Animation => tween
+        // to: inicio, from: final, fromTo: inicio y final
+        // gsap.fromTo('.box', {
+        //     x:100,
+        //     y:100
+        // },{
+        //     x:0,
+        //     y:0
+        // })
+
+        // const boxes = document.querySelectorAll('.box');
+
+        // boxes.forEach((box, i) => {
+        //     gsap.to(box, {
+        //         x:100,
+        //         duration: 1,
+        //         delay: i * 0.4
+        //     })
+        // })
+
+        // Staggered animation
+        gsap.to('.box', {
+            x: 200, // posicion en x
+            duration: 1, // duración de animación
+            rotate: 360, // rotación
+            scale: .5, // escalado
+            repeat: -1, // se repite infinitamente con -1
+            yoyo: true, // se de vulve como un yoyo
+            stagger: 0.4, // diferencia de tiempo entre cada animación
+        })
+        gsap.to('.box2', {
+            x: 200, // posicion en x
+            duration: 1, // duración de animación
+            rotate: 360, // rotación
+            scale: .5, // escalado
+            stagger: {// stagger a nivel de elemento individual
+                each: 0.2, // diferencia de tiempo entre cada animación
+                repeat: -1,
+                yoyo: true,
+            }
+        })
+
+
+    </script>
+</body>
+</html>
