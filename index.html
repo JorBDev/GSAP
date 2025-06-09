@@ -64,10 +64,20 @@
     // gsap: animación -> tween
 
     // Linea de tiempo:
+    const log = document.getElementById('log');
 
     const tl = gsap.timeline({
         defaults: { // valores por defecto (grupal)
             duration: 2
+        },
+        onComplete: () => {
+            log.innerHTML += "[Event] complete <br>"
+        },
+        onStart: () => {
+            log.innerHTML += "[Event] start <br>"
+        },
+        onRepeat: () => {
+            log.innerHTML += "[Event] repeat <br>"
         }
     });
 
@@ -89,7 +99,6 @@
     const resume = document.getElementById('resume');
     const reverse = document.getElementById('reverse');
     const restart = document.getElementById('restart');
-    const log = document.getElementById('log');
 
     play.onclick = () => {
         tl.play();
