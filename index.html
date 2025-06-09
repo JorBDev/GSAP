@@ -36,13 +36,27 @@
                 width: 100%;
             }
         }
-    </style>
 
+        #log {
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <div class="box purple"></div>
     <div class="box blue"></div>
     <div class="box yellow"></div>
+
+
+    <footer>
+        <button id="play">reproducir</button>
+        <button id="pause">pausar</button>
+        <button id="resume">resumir</button>
+        <button id="reverse">revertir</button>
+        <button id="restart">reiniciar</button>
+        <button id="turbo">turbo</button>
+    </footer>
+    <small id="log"></small>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 
@@ -64,12 +78,43 @@
     .to('.box.blue', {
         duration: 1, // duración (valor individual)
         y: -80,
-    },"<")// con el segundo parametro y el signo "<" le decimos que queremos que se anime justo al mismo tiempo que el anterior elemento
+    },2)
     .to('.box.yellow', {
         y: -100,
         x: 100,
-    },"+=1")// con el segunddo parametro "+=1" le decimos que espere 1 segundo después del anterior elemento para que se anime.
+    },3)
 
+    const play = document.getElementById('play');
+    const pause = document.getElementById('pause');
+    const resume = document.getElementById('resume');
+    const reverse = document.getElementById('reverse');
+    const restart = document.getElementById('restart');
+    const log = document.getElementById('log');
+
+    play.onclick = () => {
+        tl.play();
+        log.innerHTML +="play <br>"
+    }
+    pause.onclick = () => {
+        tl.pause();
+        log.innerHTML +="pause <br>"
+    }
+    resume.onclick = () => {
+        tl.resume();
+        log.innerHTML +="resume <br>"
+    }
+    reverse.onclick = () => {
+        tl.reverse();
+        log.innerHTML +="reverse <br>"
+    }
+    restart.onclick = () => {
+        tl.restart();
+        log.innerHTML +="restart <br>"
+    }
+    turbo.onclick = () => {
+        tl.timeScale(2);// Velocidad de animación
+        log.innerHTML +="turbo <br>"
+    }
     </script>
 </body>
 </html>
