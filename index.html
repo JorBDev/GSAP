@@ -85,7 +85,20 @@
     gsap.registerPlugin(SplitText)// Cada que se usa un plugin nuevo hay que registrarlo.
     gsap.registerPlugin(ScrollTrigger)
 
-    gsap.to(".title", {
+    gsap.from('.title', {
+        scale: 0.5,
+        autoAlpha: 0
+    })
+
+    gsap.from('#hero', {
+        scale: 0.5,
+        autoAlpha: 0
+    })
+
+    gsap.fromTo(".title", {
+        scale: 1,
+        autoAlpha:1
+    },{
         scale: 1.5,
         autoAlpha: 0,
         scrollTrigger: {
