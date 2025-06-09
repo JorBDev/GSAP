@@ -21,6 +21,10 @@
             &.purple {
                 background: rebeccapurple;
             }
+
+            &.yellow {
+                background: yellow;
+            }
         }
 
         .grid {
@@ -38,32 +42,33 @@
 <body>
     <div class="box purple"></div>
     <div class="box blue"></div>
+    <div class="box yellow"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 
     <script>
     // gsap: animación -> tween
 
-    // suavizados -> easing: https://gsap.com/docs/v3/Eases/
-    gsap.to('.box.purple', {
-        x: 200,
-        duration: 2,
-        rotate: 360,
-        scale: .75,
-        repeat: -1,
-        yoyo: true,
-        ease: 'bounce.out'
-    })
+    // Linea de tiempo:
 
-    gsap.to('.box.blue', {
-        x: 200,
-        duration: 2,
-        rotate: 360,
-        scale: .75,
-        repeat: -1,
-        yoyo: true
-    })
+    const tl = gsap.timeline({
+        defaults: { // valores por defecto (grupal)
+            duration: 2
+        }
+    });
 
+    tl
+    .to('.box.purple', {
+        x: 200,
+    })
+    .to('.box.blue', {
+        duration: 1, // duración (valor individual)
+        y: -80,
+    },"<")// con el segundo parametro y el signo "<" le decimos que queremos que se anime justo al mismo tiempo que el anterior elemento
+    .to('.box.yellow', {
+        y: -100,
+        x: 100,
+    },"+=1")// con el segunddo parametro "+=1" le decimos que espere 1 segundo después del anterior elemento para que se anime.
 
     </script>
 </body>
